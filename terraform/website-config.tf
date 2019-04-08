@@ -7,7 +7,7 @@ window._config = {
         region: '${var.region}'
     },
     api: {
-        invokeUrl: '',
+        invokeUrl: "${aws_api_gateway_deployment.deployment.invoke_url}"
     }
 };
 CONFIG
