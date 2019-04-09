@@ -1,3 +1,5 @@
 .terraform*
-.log
+*.log
 aws-serverless-workshops-master
+*.tfstate
+*.backup

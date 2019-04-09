@@ -25,7 +25,7 @@ module "cors_options_method" "cors" {
 
 module "lambda_proxy_method" "post_ride" {
     source = "./modules/lambda_proxy_method"
-    rest_api_id   = "${aws_api_gateway_rest_api.rest_api.id}"
+    rest_api_id   = "${module.cors_options_method.rest_api_id}"
     execution_arn = "${aws_api_gateway_rest_api.rest_api.execution_arn}"
     resource_id   = "${aws_api_gateway_resource.ride.id}"
     resource_path = "${aws_api_gateway_resource.ride.path_part}"
@@ -36,6 +36,6 @@ module "lambda_proxy_method" "post_ride" {
 }
 
 resource "aws_api_gateway_deployment" "deployment" {
-  rest_api_id = "${aws_api_gateway_rest_api.rest_api.id}"
+  rest_api_id = "${module.lambda_proxy_method.rest_api_id}"
   stage_name  = "prod"
 }
